@@ -14,19 +14,23 @@ const getPayments = async (req, res) => {
 
 // @desc    Create a new transaction
 // @route   POST /api/payments
+// Example inside addPayment
 const addPayment = async (req, res) => {
-  const { title, amount, type, category } = req.body;
+  const { title, amount, type, category, date } = req.body;
+
   try {
     const transaction = await Transaction.create({
       user: req.user.id,
       title,
       amount,
       type,
-      category
+      category,
+      date: date ? new Date(date) : Date.now(), // Accepts custom dates
     });
+
     res.status(201).json(transaction);
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    res.status(500).json({ message: "Failed to create entry", error: error.message });
   }
 };
 // @desc    Update a transaction

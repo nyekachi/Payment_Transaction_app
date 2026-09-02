@@ -1,9 +1,66 @@
 const User = require("../models/user");
+const Transaction = require("../models/transaction");
 const jwt = require("jsonwebtoken");
 
 // Helper function to generate JWT tokens
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+};
+
+// Auto-seed starter bank transactions for new accounts
+const seedStarterTransactions = async (userId) => {
+  const starterRecords = [
+    {
+      user: userId,
+      title: "Royal Blossom Dividend",
+      amount: 520.0,
+      type: "income",
+      category: "Nectar & Honey 🍯",
+      date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
+    },
+    {
+      user: userId,
+      title: "Cobweb Wi-Fi Network Fee",
+      amount: 28.5,
+      type: "expense",
+      category: "Dewdrops 💧",
+      date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+    },
+    {
+      user: userId,
+      title: "Glow-worm Lantern Utility",
+      amount: 14.2,
+      type: "expense",
+      category: "Moonlight Charms 🌙",
+      date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+    },
+    {
+      user: userId,
+      title: "Dragon Armor Polish & Scales",
+      amount: 45.0,
+      type: "expense",
+      category: "Dragon Scales 🐉",
+      date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+    },
+    {
+      user: userId,
+      title: "Forest Foraging Stipend",
+      amount: 185.0,
+      type: "income",
+      category: "Acorns & Seeds 🌰",
+      date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+    },
+    {
+      user: userId,
+      title: "Wand Polish & Maintenance",
+      amount: 22.0,
+      type: "expense",
+      category: "Pixie Dust ✨",
+      date: new Date(),
+    },
+  ];
+
+  await Transaction.insertMany(starterRecords);
 };
 
 // @desc    Register new user
@@ -18,6 +75,9 @@ const registerUser = async (req, res) => {
     }
 
     const user = await User.create({ name, email, password });
+
+    // Seed default bank transactions immediately upon registration
+    await seedStarterTransactions(user._id);
 
     res.status(201).json({
       _id: user._id,
