@@ -40,3 +40,17 @@ PORT=5001
 MONGO_URI=local_mongodb_connection_string
 JWT_SECRET=local_jwt_secret
 CLIENT_URL=http://localhost:5173
+
+# 🧚‍♀️ Fairy Vault — Enchanted Treasury & Banking
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-blue?style=for-the-badge&logo=vercel)](https://payment-transaction-app.vercel.app)
+[![Backend API](https://img.shields.io/badge/Backend%20API-Render-46E3B7?style=for-the-badge&logo=render)](https://fairy-vault-backend.onrender.com)
+
+> **Live Application:** [https://payment-transaction-app.vercel.app](https://payment-transaction-app.vercel.app)  
+> **API Server:** [https://fairy-vault-backend.onrender.com](https://fairy-vault-backend.onrender.com)
+
+Inspired by the magical world of Disney's *Tinkerbell* and Pixie Hollow, **Fairy Vault** imagines what a daily banking and financial management system would look like for fairies.
+
+---
+
+## 📸 Preview
