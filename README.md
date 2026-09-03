@@ -31,16 +31,6 @@ From collecting seasonal tribute berries and foraging stipends to paying for cob
 - **Database:** MongoDB Atlas & Mongoose ODM
 
 ---
-
-## ⚙️ Environment Variables
-
-### Backend (`backend/.env`)
-```env
-PORT=5001
-MONGO_URI=local_mongodb_connection_string
-JWT_SECRET=local_jwt_secret
-CLIENT_URL=http://localhost:5173
-
 # 🧚‍♀️ Fairy Vault — Enchanted Treasury & Banking
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-blue?style=for-the-badge&logo=vercel)](https://payment-transaction-app.vercel.app)
@@ -54,3 +44,13 @@ Inspired by the magical world of Disney's *Tinkerbell* and Pixie Hollow, **Fairy
 ---
 
 ## 📸 Preview
+
+
+## ⚙️ Environment Variables
+
+### Backend (`backend/.env`)
+```env
+PORT=5001
+MONGO_URI=local_mongodb_connection_string
+JWT_SECRET=local_jwt_secret
+CLIENT_URL=http://localhost:5173
